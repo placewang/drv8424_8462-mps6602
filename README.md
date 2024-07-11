@@ -74,7 +74,7 @@ return: -1-参数传入错误
 int  appGetSensorStatus(unsigned char);
 ~~~
 ## uart0
-~~~
+~~~C
 用于printf调试打印接口，波特率默认115200bps,
 bsp_uart.h提供以下接口; 宏定义LOG_ENABLE为打印开关
 #define LOG_ENABLE      1
@@ -92,7 +92,7 @@ bsp_uart.h提供以下接口; 宏定义LOG_ENABLE为打印开关
 #define log_funcName()   log_debug("call %s \n", __FUNCTION__)
 ~~~
 ## can0
-~~~
+~~~C
 波特率默认1Mbps，开启接收中断,中断优先级最高,接收ID与掩码为列表模式可通过条件编译修改
  /* 1MBps */
 #if CAN_BAUDRATE == 1000
@@ -134,7 +134,7 @@ int appCanDataDeQueue(Queue* q, ElemType *val)
 int appCanDataSend(unsigned char *data,unsigned char len,unsigned short id)
 ~~~
 ## ADC_DMA
-~~~
+~~~C
 #include "app_AdcPower.h"
 "
 获取检测电压值(0-3.3)未滤波
@@ -152,7 +152,7 @@ int appGetPowerActualVoltageValue(float* DC12V,float* DC24V)
 ## StepMotor
 ___
 ### config  
-~~~
+~~~C
 #include "app_MotorConfig.h"
 "9路电机上电默认参数赋值  -运行电流 -锁定电流 -电机运动默认正方向"
 void app_NineStepperMotorsDefaultParameter(void);
@@ -190,7 +190,7 @@ microstep:  0-全步
 int appNineMotorMicrostepSet(unsigned char num,unsigned char microstep);
 ~~~
 #### StepMove
-~~~
+~~~C
 bsp_Time1Step_init()bsp_Time2Step_init()bsp_Time4Step_init()bsp_Time5Step_init()
 bsp_Time6Step_init()bsp_Time9Step_init()bsp_Time10Step_init()bsp_Time11Step_init()
 bsp_Time12Step_init();9个定时器开启的定时中断优先级均是最高与CAN接收一样
@@ -200,7 +200,7 @@ appMotorStepModeMove_T()与appMotorSpeedModeMove_T()用那个位置编码值EnCoder都会更
 "
 ~~~
 ![alt text](image.png)
-~~~
+~~~C
 #include "app_Motorstep.h"
 "
 多条位置指令重叠运动处理(阻塞) appMotorStepModeMove_T中调用此函数接口
